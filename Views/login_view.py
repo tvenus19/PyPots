@@ -1,11 +1,16 @@
 import tkinter as tk
 from tkinter import ttk
+from controllers.login_controller import authenticate
 
 #Function to submit login
 def submit_login():
     username = username_entry.get()
     password = password_entry.get()
-    print(f'Username: {username}, Password: {password}')
+    
+    if authenticate(username, password):
+        print("Success")
+    else:
+        print("Login failed. Wrong credentials.")
 
 #Tkinter window initialization
 root = tk.Tk()
