@@ -1,19 +1,14 @@
-from sqlalchemy import create_engine, Column, Integer, String
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 import bcrypt
-
-Base = declarative_base()
-
-class  User(Base):
-    __tablename__ = 'users'
-
-    id= Column(Integer, primary_key=True)
-    username = Column(String(50), unique=True, nullable=False)
-    password = Column(String(100), nullable=False)
+from models.base import Base
+from models.user_model import User
+from models.plant_model import Plant
+from models.pot_model import Pot
+from models.sensor_data import SensorData
 
 # Create an SQLite database
-engine = create_engine('sqlite:///users.db')
+engine = create_engine('sqlite:///pyflora.db')
 
 # Create tables
 Base.metadata.create_all(engine)
