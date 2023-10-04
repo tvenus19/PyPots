@@ -1,0 +1,7 @@
+from models.database_setup import create_session
+from models.plant_model import Plant
+
+session = create_session()
+
+for plant in session.query(Plant).all():
+    print(plant.name, plant.soil_moisture, plant.light_preference, plant.temperature_preference, plant.fertilizer_recommendation)

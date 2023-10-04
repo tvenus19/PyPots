@@ -25,7 +25,10 @@ existing_user = session.query(User).filter_by(username="admin").first()
 
 if existing_user is None:
     hashed_password = bcrypt.hashpw("algebra".encode('utf-8'), bcrypt.gensalt())
-    predefined_user = User(username="admin", password=hashed_password.decode('utf-8'))
+    predefined_user = User(username="admin",
+                           password=hashed_password.decode('utf-8'),
+                           name="Pythonko",
+                           lastname="Algebric")
     session.add(predefined_user)
     session.commit()
 else:

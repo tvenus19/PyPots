@@ -8,9 +8,9 @@ class Plant(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(50), nullable=False)
     image_path = Column(String(255), nullable=False)
-    soil_moisture = Column(Enum('daily', 'weekly', 'monthly'), nullable=False)
-    light_preference = Column(Enum('daily', 'weekly', 'monthly'), nullable=False)
-    temperature_preference = Column(Enum('warm', 'cold'), nullable=False)
+    soil_moisture = Column(Enum('daily', 'weekly', 'bi-weekly', 'monthly'), nullable=False)
+    light_preference = Column(Enum('low', 'indirect', 'direct'), nullable=False)
+    temperature_preference = Column(Enum('warm', 'moderate', 'cold'), nullable=False)
     fertilizer_recommendation = Column(String(100), nullable=False)
     pots = relationship('Pot', back_populates='plant')
 
